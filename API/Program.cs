@@ -1,4 +1,6 @@
+using Core.Interface;
 using Infrastructure.Data;
+using Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddDbContext<StoreContext>(x => 
-    x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    x.UseSqlite(builder.Configuration.GetConnectionString("SQLiteConnection")));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
