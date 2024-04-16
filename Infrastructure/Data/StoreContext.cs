@@ -1,5 +1,7 @@
+using System.Reflection;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Infrastructure.Data;
 
@@ -9,12 +11,9 @@ public class StoreContext(DbContextOptions<StoreContext> options) : DbContext(op
     public DbSet<ProductType> ProductTypes { get; set; }
     public DbSet<ProductBrand> ProductBrands { get; set; }
 
-    // protected override void OnModelCreating(ModelBuilder modelBuilder)
-    // {
-    //     modelBuilder.Entity<Product>().HasData(
-    //         new Product {Id = 1, Name = "Product 1"},
-    //         new Product {Id = 2, Name = "Product 2"},
-    //         new Product {Id = 3, Name = "Product 3"}
-    //     );
-    // }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 }

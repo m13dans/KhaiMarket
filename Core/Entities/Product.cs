@@ -10,5 +10,7 @@ public class Product : BaseEntity
     public int ProductTypeId { get; set; }
     public ProductBrand ProductBrand { get; set; }
     public int ProductBrandId { get; set; }
+    public ICollection<Review> Reviews { get; set; }
+    public int MyProperty { get; set; }
 
 }
