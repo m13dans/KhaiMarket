@@ -13,7 +13,7 @@
 *.userosscache
 *.sln.docstates
 
-appsettings.json
+# appsettings.json
 
 # *.db
 

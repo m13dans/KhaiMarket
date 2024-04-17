@@ -10,6 +10,6 @@ public class Product : BaseEntity
     public int CategoryId { get; set; }
     public ProductBrand? ProductBrand { get; set; } 
     public int ProductBrandId { get; set; }
-    public ICollection<Review> Reviews { get; } = new List<Review>();
+    public ICollection<Review>? Reviews { get; set; }
     public int ReviewId { get; set; }
 }
